@@ -151,7 +151,7 @@ def compile_filters(raw):
     for name, d in (raw or {}).items():
         out[name] = {
             k: (re.compile("|".join(d[k]), re.I) if d.get(k) else None)
-            for k in ("core", "context", "event", "exclude")
+            for k in ("core", "topic", "anchor", "exclude")
         }
     return out
 
@@ -163,13 +163,21 @@ def passes(f, text):
         return False
     if f["core"] and f["core"].search(text):
         return True
-    if f["context"] and f["event"]:
-        return bool(f["context"].search(text) and f["event"].search(text))
+    if f["topic"] and f["anchor"]:
+        return bool(f["topic"].search(text) and f["anchor"].search(text))
     return False
 
 
 def slug_of(link):
     return re.sub(r"[-_/]+", " ", urlparse(link).path).lower()
+
+
+def filter_text(item):
+    # baris mode links: "judul | url". Cek judul + slug saja, host jangan ikut (host bisa memuat kata filter).
+    if " | " in item:
+        a, _, u = item.rpartition(" | ")
+        return f"{a} {slug_of(u)}"
+    return item
 
 
 def clean(html, n=220):
@@ -274,7 +282,7 @@ def run_page(src, st, filters, body, err):
         log(f"[{sid}] seed {len(cur)} baris")
     else:
         f = filters.get(src.get("filter")) if src.get("filter") else None
-        added = [t for k, t in cur.items() if k not in old and passes(f, t)]
+        added = [t for k, t in cur.items() if k not in old and passes(f, filter_text(t))]
         if added:
             shown = [a[:200] for a in added[:8]]
             msg = "\n".join("- " + s for s in shown)
