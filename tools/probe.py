@@ -27,7 +27,7 @@ def robots_lines(base):
     try:
         r = requests.get(base + "/robots.txt", headers={"User-Agent": main.UA}, timeout=15)
         keep = [ln for ln in r.text.splitlines() if re.search(r"user-agent|rss|search|news", ln, re.I)]
-        return {"status": r.status_code, "lines": keep[:60]}
+        return {"status": r.status_code, "lines": keep[:60], "full": r.text[:8000]}
     except Exception as e:  # noqa: BLE001
         return {"error": str(e)[:200]}
 
