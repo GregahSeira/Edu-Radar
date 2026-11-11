@@ -8,6 +8,45 @@
 # Butuh secret DISCORD_WEBHOOK_LAIN. Tanpa secret itu, berita abu-abu dilewati.
 gray_channel: lain
 
+# Media tepercaya untuk feed agregator (strip_outlet, mis. Google News). Cocok dengan nama media di feed.
+# Hasil lolos dari media lain (blog, PR sekolah, portal lokal kecil) turun ke #lain. Daftar ini dicek tanpa huruf besar kecil.
+trusted_outlets:
+  - '^kompas\.(com|id)$'
+  - '^kompas ?tv'
+  - 'detik'
+  - 'cnn indonesia'
+  - 'cnbc indonesia'
+  - 'tempo'
+  - '^antara'
+  - 'republika'
+  - 'liputan ?6'
+  - 'tirto'
+  - 'okezone'
+  - 'sindonews'
+  - 'viva'
+  - 'suara\.com'
+  - 'kumparan'
+  - 'bisnis\.com'
+  - 'katadata'
+  - 'tribun'
+  - 'media indonesia'
+  - 'metro ?tv'
+  - 'tvone'
+  - 'jawa ?pos'
+  - 'jpnn'
+  - 'merdeka'
+  - 'bbc'
+  - 'beritasatu'
+  - 'idn ?times'
+  - 'rri\.co\.id'
+  - 'pikiran rakyat'
+  - 'solopos'
+  - 'mongabay'
+  - 'kementerian'
+  - 'kemendikdasmen'
+  - 'kemdiktisaintek'
+  - 'snpmb'
+
 filters:
   # Satu aturan untuk semua berita (edu dan strict sama): khusus SMA sederajat dan seputar masuk PTN.
   # 2 lolos : tidak kena exclude, DAN (kena core ATAU (kena topic DAN kena anchor)).

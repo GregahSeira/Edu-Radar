@@ -54,6 +54,21 @@ cases:
   - {t: "Resmikan Sekolah Baru, Kepala Daerah Pastikan Siswa Belajar Nyaman", y: buang}
   - {t: "Pemkot Resmikan Gedung Perpustakaan Kampus Swasta", y: buang}
 
+  # ---- contoh nyata dari feed Google News (11 Nov 2026) ----
+  - {t: "TKA Menjadi Validasi SNBT di 72 Perguruan Tinggi", y: lolos}
+  - {t: "Pelaksanaan TKA SMA 2026 Diwarnai Pelanggaran, Apa Sanksinya?", y: lolos}
+  - {t: "Penjurusan SMA akan Berlaku Lagi, Perlu Relevan & Adaptif", y: lolos}
+  - {t: "Perubahan Sistem Penilaian TKA SMA, MA dan SMK Terbaru", y: lolos}
+  - {t: "Hampir Setahun Kasus KIP Kuliah Tak Tuntas, Kepercayaan Masyarakat Terhadap Kejatisu Kian Luntur", y: lolos}
+  - {t: "Guru MTsN 4 Bantul Penguatan Materi Literasi SNBT di MA Hamatul Quran", y: lolos}
+  - {t: "Penguatan Kolaborasi Perluas Kesempatan Siswa Boarding School Kediri Lolos PTN", y: abu}
+  - {t: "Job Fair Kendari 2026", y: buang}
+  - {t: "Hidayat Nur Wahid resmi mundur dari jabatan wakil ketua MPR", y: buang}
+  - {t: "Masih Bisa Daftar, UPI Buka Penerimaan Mahasiswa S2/S3 Semester Genap 2026 hingga 29 November", y: buang}
+  - {t: "Press Release: Kemendikdasmen Apresiasi Swiss Future Week, Kenalkan Peserta Didik pada Dunia Kerja", y: buang}
+  - {t: "Enam Penghargaan Nasional Jadi Modal LLDIKTI VI Tingkatkan Layanan Pendidikan", y: buang}
+  - {t: "Antusiasme Tinggi, Siswa SMKN 3 Palangka Raya Ikuti Try Out UTBK Huma Betang Gratis", y: buang}
+
   # ---- tautan halaman (mode links): host tidak boleh ikut dicek ----
   - {t: "Perpaduan Budaya dan Teknologi, Robot Gamelan Karya Udinus Hadir di KSTI 2026 | https://www.kemdiktisaintek.go.id/news/article/perpaduan-budaya-dan-teknologi-robot-gamelan-karya-udinus-hadir-di-ksti-2", y: buang, link: true}
   - {t: "Pendaftaran SNBT 2027 Dibuka | https://www.kemdiktisaintek.go.id/news/article/pendaftaran-snbt-2027-dibuka", y: lolos, link: true}

@@ -37,6 +37,7 @@ GRACE = 120  # detik toleransi interval (hanya untuk sumber dengan every)
 WORKERS = 8
 GRAY_CHANNEL = None  # diisi dari sources.yml (gray_channel)
 GRAY_ON = False  # aktif hanya jika webhook channel itu ada (atau DRY_RUN)
+TRUSTED = None  # regex media tepercaya (sources.yml trusted_outlets), dipakai untuk feed strip_outlet
 
 
 def log(*a):
@@ -191,6 +192,13 @@ def split_outlet(title, e):
     return title.strip(), outlet.strip()
 
 
+def gate(tier, outlet):
+    """Feed agregator (Google News): lolos penuh hanya dari media tepercaya, sisanya turun ke abu-abu."""
+    if tier == 2 and TRUSTED is not None and not TRUSTED.search(outlet or ""):
+        return 1
+    return tier
+
+
 def filter_text(item):
     # baris mode links: "judul | url". Cek judul + slug saja, host jangan ikut (host bisa memuat kata filter).
     if " | " in item:
@@ -244,6 +252,8 @@ def run_rss(src, st, filters, body):
             text = f"{title} {summ} {slug}"
             use = hf if (hosts and any(urlparse(link).netloc.endswith(h) for h in hosts)) else f
             tier = classify(use, text)
+            if src.get("strip_outlet"):
+                tier = gate(tier, summ)
             if tier == 0 or (tier == 1 and not GRAY_ON):
                 continue
             key = norm_title(title)
@@ -359,7 +369,8 @@ def main():
     with open(SOURCES_PATH, encoding="utf-8") as f:
         cfg = yaml.safe_load(f)
     filters = compile_filters(cfg.get("filters"))
-    global GRAY_CHANNEL, GRAY_ON
+    global GRAY_CHANNEL, GRAY_ON, TRUSTED
+    TRUSTED = re.compile("|".join(cfg["trusted_outlets"]), re.I) if cfg.get("trusted_outlets") else None
     GRAY_CHANNEL = cfg.get("gray_channel")
     GRAY_ON = bool(GRAY_CHANNEL) and (DRY or bool(os.environ.get("DISCORD_WEBHOOK_" + GRAY_CHANNEL.upper())))
     st = load_state()

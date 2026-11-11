@@ -17,17 +17,25 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import main  # noqa: E402
 
 DEFAULT = [
-    "https://news.google.com/rss/search?q=SNBT+OR+UTBK+OR+SNBP+OR+SNPMB+when:2d&hl=id&gl=ID&ceid=ID:id",
-    "https://news.google.com/rss/search?q=%22jalur+mandiri%22+OR+%22KIP+Kuliah%22+OR+%22masuk+PTN%22+when:2d&hl=id&gl=ID&ceid=ID:id",
-    "https://news.google.com/rss/search?q=%22TKA+SMA%22+OR+%22penjurusan+SMA%22+OR+%22tes+kemampuan+akademik%22+when:2d&hl=id&gl=ID&ceid=ID:id",
+    "https://www.bing.com/news/search?q=SNBT+OR+UTBK+OR+SNBP&format=rss&setmkt=id-ID",
+    "https://www.antaranews.com/rss/humaniora.xml",
+    "https://www.antaranews.com/rss/pendidikan.xml",
+    "https://www.jpnn.com/index.php?mib=rss",
+    "https://www.suara.com/rss/edukasi",
+    "https://www.medcom.id/rss/terkini.xml",
+    "https://lapi.kumparan.com/v2.0/rss/",
+    "https://www.kemdiktisaintek.go.id/feed",
+    "https://www.kemdiktisaintek.go.id/rss",
+    "https://snpmb.id/feed",
+    "https://www.beritasatu.com/rss",
+    "https://www.merdeka.com/feed/",
 ]
 
 
 def robots_lines(base):
     try:
         r = requests.get(base + "/robots.txt", headers={"User-Agent": main.UA}, timeout=15)
-        keep = [ln for ln in r.text.splitlines() if re.search(r"user-agent|rss|search|news", ln, re.I)]
-        return {"status": r.status_code, "lines": keep[:60], "full": r.text[:8000]}
+        return {"status": r.status_code, "full": r.text[:3000]}
     except Exception as e:  # noqa: BLE001
         return {"error": str(e)[:200]}
 
