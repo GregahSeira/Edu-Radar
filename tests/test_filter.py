@@ -26,31 +26,6 @@ def test_cases():
     assert not bad, "\n".join(bad)
 
 
-def test_gate():
-    main.TRUSTED = main.re.compile("|".join(CFG["trusted_outlets"]), main.re.I)
-    try:
-        for outlet, want in [
-            ("Kompas.com", 2), ("Kompas.id", 2), ("detikEdu", 2), ("CNN Indonesia", 2), ("ANTARA News Sultra", 2),
-            ("Tribun Kaltim", 2), ("RRI.co.id", 2), ("Kemendikdasmen", 2), ("Tirto.id", 2), ("Tempo.co", 2),
-            ("Kompasiana.com", 1), ("Hai Kalteng", 1), ("Media Center Sembada", 1), ("MAN 3 Bungo", 1),
-            ("Mommiesdaily", 1), ("", 1),
-        ]:
-            assert main.gate(2, outlet) == want, f"gate(2, {outlet!r}) harap {want}"
-        assert main.gate(1, "Kompas.com") == 1 and main.gate(0, "Kompas.com") == 0
-    finally:
-        main.TRUSTED = None
-
-
-def test_split_outlet():
-    class E(dict):
-        pass
-
-    e = E(source={"title": "Kompas.com"})
-    assert main.split_outlet("Jadwal UTBK 2027 - rilis - Kompas.com", e) == ("Jadwal UTBK 2027 - rilis", "Kompas.com")
-    assert main.split_outlet("Judul tanpa source - Tribunnews.com", E()) == ("Judul tanpa source", "Tribunnews.com")
-    assert main.split_outlet("Hanya judul", E()) == ("Hanya judul", "")
-
-
 def test_filters_shared():
     assert FILTERS.keys() >= {"edu", "strict"}
 
@@ -67,8 +42,6 @@ def test_sources():
                 assert s[k] in FILTERS, f"{s['id']}: filter {s[k]} tidak ada"
         if s.get("enabled") is False:
             assert s.get("todo"), f"{s['id']}: nonaktif tanpa todo"
-        if s.get("strip_outlet"):
-            assert s["type"] == "rss", s["id"]
     assert CFG.get("gray_channel") == "lain"
 
 

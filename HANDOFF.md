@@ -22,15 +22,16 @@ Dokumen ini untuk Claude Code di akun baru. Baca habis sebelum bertindak. Kode s
 - `requirements.txt`: versi dipin.
 - Pemicu: cron-job.org (workflow_dispatch tiap 15 menit), cron GitHub tiap jam sebagai cadangan.
 - Monitor hidup: healthchecks.io (`HC_URL`), skrip ping tiap run sukses.
-- Discord 3 channel: `#resmi` (RESMI, PTN), `#berita` (BERITA), `#sistem` (alert sumber rusak/pulih).
-- Secrets: `DISCORD_WEBHOOK_RESMI`, `DISCORD_WEBHOOK_BERITA`, `DISCORD_WEBHOOK_SISTEM`, `HC_URL`.
+- Discord 4 channel: `#resmi` (RESMI, PTN), `#berita` (BERITA), `#lain` (berita abu-abu, senyap), `#sistem` (alert sumber rusak/pulih).
+- Secrets: `DISCORD_WEBHOOK_RESMI`, `DISCORD_WEBHOOK_BERITA`, `DISCORD_WEBHOOK_LAIN` (opsional), `DISCORD_WEBHOOK_SISTEM`, `HC_URL`.
+- Tes: `tests/test_filter.py` dan `tests/cases.yml` (jalan di Actions `test.yml`). Probe URL dari IP Actions: workflow `probe.yml`, hasil di branch `probe`.
 - Repo publik. Secrets hanya di GitHub Secrets.
 
 ## 4. Aturan perilaku (sudah diimplementasi dan dites)
 - Run pertama per sumber = seed diam. Sumber baru yang ditambah nanti juga seed diam.
 - RESMI dan PTN: semua perubahan dikirim (diff baris, bukan seluruh halaman).
 - BERITA: hanya yang lolos filter.
-- Filter: lolos kalau kena kata inti, atau (kata konteks pendidikan DAN kata peristiwa). Kata negatif membuang.
+- Filter (diganti 11 Nov 2026, khusus SMA dan masuk PTN): lolos kalau kena `core`, atau (`topic` DAN `anchor`). `topic` tanpa `anchor` atau `weak` (TKA) = abu-abu, kirim senyap ke #lain. `exclude` selalu membuang. Detail di README.
 - Teks yang dicek filter: judul + deskripsi + slug URL.
 - Dedup: guid per feed, plus kemiripan judul lintas media (70 karakter ternormalisasi).
 - Sumber gagal atau kosong 3x berturut-turut: alert #sistem, sekali. Pulih: pesan pulih.
@@ -67,12 +68,13 @@ Dokumen ini untuk Claude Code di akun baru. Baca habis sebelum bertindak. Kode s
 - Prioritas rendah (tetap dipakai atas permintaan pemilik): BBC Indonesia, CNBC Indonesia, Tempo nasional
 - Alasan ambil feed induk: berita relevan bisa muncul di luar kanal edu.
 - Dibuang: Tribunnews (mati sejak 2026-11-08), Kompas (RSS dilarang robots, Telegram tidak resmi dan mati), Metro TV, tvOne, Media Indonesia, Kaskus, path lama Okezone.
-- Belum dicoba: JPNN (`jpnn.com/index.php?mib=rss`), kumparan, Kompas lewat Google News `site:kompas.com` (akses dari IP Actions belum diuji).
+- Ditambah 11 Nov 2026 (sudah dites dari IP Actions: robots ok, HTTP 200): Antara humaniora, JPNN.
+- Tidak layak (dites dari IP Actions): Google News RSS (robots.txt `Disallow: /` untuk crawler umum, `/rss/search` tidak diizinkan), Bing News RSS (0 item), feed pendidikan Antara/Suara/Medcom/Kemdiktisaintek/SNPMB/Beritasatu/Merdeka (404 atau kosong). Kumparan hidup tapi hanya 25 item, tidak dipakai.
 
 ## 6. Status tes
 - Lolos offline (server lokal): seed diam, filter inti/konteks/negatif, dedup lintas feed, diff halaman, `ignore_regex`, `watch_appear`, alert 3x gagal sekali saja, sumber `enabled: false` tidak disentuh, robots melarang, kirim gagal lalu retry, state stabil saat tidak ada perubahan.
-- BELUM dites: semua akses jaringan nyata. Sesi pembuat tidak bisa akses internet dari shell, jadi tidak ada satu pun sumber yang dibaca langsung oleh `main.py`.
-- Hasil cek via alat fetch (bisa basi): feed lain sehat, Tribunnews mati. Jangan percaya angka "segar" tanpa cek dari Actions.
+- Sudah jalan di Actions (11 Nov 2026): 38 dari 41 sumber seed sukses, cron-job.org tiap 15 menit terbukti. SPAN-PTKIN dan UM-PTKIN mati (523), dinonaktifkan. UGM v27 belum ada (normal).
+- Uji filter: 54 kasus di `tests/cases.yml` lolos, termasuk contoh nyata dari detikEdu dan Google News.
 
 ## 7. Langkah lanjut (urut)
 1. Buat repo publik, upload isi paket ini. Cabang default `main`.
