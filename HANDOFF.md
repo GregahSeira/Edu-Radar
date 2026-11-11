@@ -74,7 +74,7 @@ Dokumen ini untuk Claude Code di akun baru. Baca habis sebelum bertindak. Kode s
 ## 6. Status tes
 - Lolos offline (server lokal): seed diam, filter inti/konteks/negatif, dedup lintas feed, diff halaman, `ignore_regex`, `watch_appear`, alert 3x gagal sekali saja, sumber `enabled: false` tidak disentuh, robots melarang, kirim gagal lalu retry, state stabil saat tidak ada perubahan.
 - Sudah jalan di Actions (11 Nov 2026): 38 dari 41 sumber seed sukses, cron-job.org tiap 15 menit terbukti. SPAN-PTKIN dan UM-PTKIN mati (523), dinonaktifkan. UGM v27 belum ada (normal).
-- Uji filter: 54 kasus di `tests/cases.yml` lolos, termasuk contoh nyata dari detikEdu dan Google News.
+- Uji filter: 60 kasus di `tests/cases.yml` lolos, termasuk contoh nyata dari detikEdu dan Google News.
 
 ## 7. Langkah lanjut (urut)
 1. Buat repo publik, upload isi paket ini. Cabang default `main`.
