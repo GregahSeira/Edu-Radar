@@ -1,0 +1,353 @@
+[
+ {
+  "url": "https://www.bing.com/news/search?q=SNBT+OR+UTBK+OR+SNBP&format=rss&setmkt=id-ID",
+  "robots_txt": {
+   "status": 200,
+   "full": "User-agent: msnbot-media\r\nDisallow: /\r\nAllow: /th?\r\n\r\nUser-agent: Twitterbot\r\nDisallow:\r\n\r\nUser-agent: *\r\nDisallow: /academic/profile\r\nDisallow: /academic/search\r\nDisallow: /account/\r\nDisallow: /aclick\r\nDisallow: /alink\r\nDisallow: /amp/\r\nAllow: /api/maps/\r\nDisallow: /api/\r\nDisallow: /bfp/search\r\nDisallow: /bing-site-safety\r\nDisallow: /blogs/search/\r\nDisallow: /ck/\r\nDisallow: /copilotsearch?q=\r\nDisallow: /cr$\r\nDisallow: /cr?\r\nDisallow: /entities/search\r\nDisallow: /entityexplore$\r\nDisallow: /entityexplore?\r\nDisallow: /fd/\r\nDisallow: /fun/api/\r\nDisallow: /fun/g/\r\nDisallow: /history\r\nDisallow: /hotel/reviews?\r\nDisallow: /hotels/search\r\nDisallow: /HpImageArchive.aspx\r\nDisallow: /hpm\r\nDisallow: /hpmob\r\nDisallow: /images/async/?\r\nDisallow: /images/async?\r\nDisallow: /images/hosted/?\r\nDisallow: /images/hosted/search?\r\nDisallow: /images/hosted?\r\nDisallow: /images/search%3F\r\nDisallow: /images/search%5C\r\nDisallow: /images/search/?\r\nDisallow: /images/search?\r\nDisallow: /images/searchbyimage\r\nDisallow: /images?\r\nDisallow: /inboxcommerce\r\nDisallow: /local\r\nDisallow: /maps/adsendpoint\r\nDisallow: /merchant/reviews?\r\nDisallow: /notifications/\r\nDisallow: /offers/proxy/dealsserver/api/log\r\nDisallow: /offers/proxy/dealsserver/buy\r\nDisallow: /ping\r\nDisallow: /product/reviews?\r\nDisallow: /profile/history?\r\nDisallow: /proFile/history?\r\nDisallow: /Proxy.ashx\r\nDisallow: /results\r\nDisallow: /rewardsapp/\r\nDisallow: /search\r\nDisallow: /Search\r\nDisallow: /settings\r\nDisallow: /shenghuo\r\nAllow: /shop$\r\nAllow: /shop/\r\nDisallow: /shop/collections\r\nDisallow: /shop/productpage\r\nDisallow: /shop/topics\r\nDisallow: /shop?*\r\nDisallow: /social/search?\r\nDisallow: /spbasic\r\nDisallow: /spresults\r\nDisallow: /static/\r\nDisallow: /th$\r\nDisallow: /th?\r\nDisallow: /translator/?ref=\r\nDisallow: /travel/api\r\nDisallow: /travel/css\r\nDisallow: /travel/flight/flightSearch\r\nDisallow: /travel/flight/flightSearchAction\r\nDisallow: /travel/flight/search/?\r\nDisallow: /travel/flight/search?\r\nDisallow: /travel/flights\r\nDisallow: /travel/flight-search\r\nDisallow: /travel/hotel/hotelMiniSearchRequest\r\nDisallow: /travel/hotel/hotelSearch\r\nDisallow: /travel/hotels/checkout\r\nDisallow: /travel/hotels/detail\r\nDisallow: /travel/hotels/search/?\r\nDisallow: /travel/hotels/search?\r\nDisallow: /travel/hotel-search\r\nDisallow: /travel/scripts\r\nDisallow: /travel/secure\r\nDisallow: /url\r\nDisallow: /videos/browsing\r\nDisallow: /videos/explore\r\nDisallow: /videos/favorites\r\nDisallow: /videos/feed\r\nDisallow: /videos/music\r\nDisallow: /videos/trending\r\nDisallow: /widget/cr\r\nDisallow: /widget/entity/search/?\r\nDisallow: /widget/render\r\nDisallow: /widget/snapshot\r\nDisallow: /work\r\n\r\nSitemap: https://www.bing.com/sitemap.xml"
+  },
+  "robots_allows_edu_radar": true,
+  "http": 200,
+  "content_type": "application/xml; charset=utf-8",
+  "entries": 0,
+  "feed_title": "SNBT OR UTBK OR SNBP - BingBerita",
+  "sample": []
+ },
+ {
+  "url": "https://www.antaranews.com/rss/humaniora.xml",
+  "robots_txt": {
+   "status": 200,
+   "full": "User-agent: *\r\nDisallow: /ajax/*\r\nDisallow: /ucnews/*\r\nAllow: /\r\n\r\nUser-agent: facebookexternalhit\r\nDisallow: /api/\r\nAllow: /\r\n\r\nUser-agent: Twitterbot\r\nDisallow: /api/\r\nAllow: /\r\n\r\nUser-agent: BLP_bbot/0.1\r\nDisallow: /\r\n\r\nUser-agent: BLP_bbot\r\nDisallow: /\r\n\r\nUser-agent: ClaudeBot\r\nDisallow: /"
+  },
+  "robots_allows_edu_radar": true,
+  "http": 200,
+  "content_type": "text/xml; charset=utf-8",
+  "entries": 20,
+  "feed_title": "Humaniora - ANTARA News",
+  "sample": [
+   {
+    "title": "Cara melaporkan bansos tidak tepat sasaran lewat cek bansos",
+    "link": "https://www.antaranews.com/berita/5838499/cara-melaporkan-bansos-tidak-tepat-sasaran-lewat-cek-bansos",
+    "id": "https://www.antaranews.com/berita/5838499/cara-melaporkan-bansos-tidak-tepat-sasaran-lewat-cek-bansos",
+    "published": "Sat, 07 Nov 2026 16:08:42 +0700",
+    "source": null,
+    "summary": "<img align=\"left\" border=\"0\" src=\"https://img.antaranews.com/cache/800x533/2020/10/06/cek-bansos.jpg\" />Penyaluran bantuan sosial (bansos) ditujukan untuk memba"
+   },
+   {
+    "title": "Cara cetak KK Online di rumah, ini syarat dan langkahnya",
+    "link": "https://www.antaranews.com/berita/5838287/cara-cetak-kk-online-di-rumah-ini-syarat-dan-langkahnya",
+    "id": "https://www.antaranews.com/berita/5838287/cara-cetak-kk-online-di-rumah-ini-syarat-dan-langkahnya",
+    "published": "Sat, 07 Nov 2026 14:06:43 +0700",
+    "source": null,
+    "summary": "<img align=\"left\" border=\"0\" src=\"https://img.antaranews.com/cache/800x533/2021/08/28/22.jpg\" />Kartu Keluarga (KK) merupakan dokumen kependudukan yang dibutuhk"
+   },
+   {
+    "title": "Masuk desil 1-4? Ini 4 bansos yang bisa diterima masyarakat",
+    "link": "https://www.antaranews.com/berita/5838279/masuk-desil-1-4-ini-4-bansos-yang-bisa-diterima-masyarakat",
+    "id": "https://www.antaranews.com/berita/5838279/masuk-desil-1-4-ini-4-bansos-yang-bisa-diterima-masyarakat",
+    "published": "Sat, 07 Nov 2026 14:02:20 +0700",
+    "source": null,
+    "summary": "<img align=\"left\" border=\"0\" src=\"https://img.antaranews.com/cache/800x533/2026/09/02/penyaluran-bantuan-pangan-di-kota-sorong-2855032.jpg\" />Pemerintah menggun"
+   },
+   {
+    "title": "Nama tak muncul di cek bansos? Ini cara mengajukan usulan",
+    "link": "https://www.antaranews.com/berita/5837891/nama-tak-muncul-di-cek-bansos-ini-cara-mengajukan-usulan",
+    "id": "https://www.antaranews.com/berita/5837891/nama-tak-muncul-di-cek-bansos-ini-cara-mengajukan-usulan",
+    "published": "Sat, 07 Nov 2026 08:19:58 +0700",
+    "source": null,
+    "summary": "<img align=\"left\" border=\"0\" src=\"https://img.antaranews.com/cache/800x533/2023/06/21/WhatsApp-Image-2023-06-20-at-20.58.14.jpg\" />Nama yang tidak muncul dalam "
+   },
+   {
+    "title": "Profil karier Letjen Kristomei, Kepala BNPB yang baru",
+    "link": "https://www.antaranews.com/berita/5837887/profil-karier-letjen-kristomei-kepala-bnpb-yang-baru",
+    "id": "https://www.antaranews.com/berita/5837887/profil-karier-letjen-kristomei-kepala-bnpb-yang-baru",
+    "published": "Sat, 07 Nov 2026 08:17:38 +0700",
+    "source": null,
+    "summary": "<img align=\"left\" border=\"0\" src=\"https://img.antaranews.com/cache/800x533/2026/11/05/FotoGrid_20261105_104117612_1.jpg\" />Letnan Jenderal TNI Kristomei Siantur"
+   },
+   {
+    "title": "Cara cek BPJS Kesehatan aktif atau tidak lewat HP, ini panduannya",
+    "link": "https://www.antaranews.com/berita/5813251/cara-cek-bpjs-kesehatan-aktif-atau-tidak-lewat-hp-ini-panduannya",
+    "id": "https://www.antaranews.com/berita/5813251/cara-cek-bpjs-kesehatan-aktif-atau-tidak-lewat-hp-ini-panduannya",
+    "published": "Mon, 26 Oct 2026 21:59:51 +0700",
+    "source": null,
+    "summary": "<img align=\"left\" border=\"0\" src=\"https://img.antaranews.com/cache/800x533/2026/10/14/IMG_20261014_084549.jpg\" />Memastikan status kepesertaan BPJS Kesehatan te"
+   },
+   {
+    "title": "BPJS Kesehatan PBI dan Non-PBI, ini perbedaan dan cara ceknya",
+    "link": "https://www.antaranews.com/berita/5813223/bpjs-kesehatan-pbi-dan-non-pbi-ini-perbedaan-dan-cara-ceknya",
+    "id": "https://www.antaranews.com/berita/5813223/bpjs-kesehatan-pbi-dan-non-pbi-ini-perbedaan-dan-cara-ceknya",
+    "published": "Mon, 26 Oct 2026 21:50:08 +0700",
+    "source": null,
+    "summary": "<img align=\"left\" border=\"0\" src=\"https://img.antaranews.com/cache/800x533/2026/10/15/577143.jpg\" />Kepesertaan BPJS Kesehatan terbagi menjadi dua kelompok utam"
+   },
+   {
+    "title": "Gaji Rp8 juta, berapa yang diterima setelah potongan BPJS dan pajak?",
+    "link": "https://www.antaranews.com/berita/5810179/gaji-rp8-juta-berapa-yang-diterima-setelah-potongan-bpjs-dan-pajak",
+    "id": "https://www.antaranews.com/berita/5810179/gaji-rp8-juta-berapa-yang-diterima-setelah-potongan-bpjs-dan-pajak",
+    "published": "Sun, 25 Oct 2026 09:11:15 +0700",
+    "source": null,
+    "summary": "<img align=\"left\" border=\"0\" src=\"https://img.antaranews.com/cache/800x533/2026/10/14/IMG_20261014_084549.jpg\" />Gaji yang diterima pekerja setiap bulan tidak s"
+   }
+  ]
+ },
+ {
+  "url": "https://www.antaranews.com/rss/pendidikan.xml",
+  "robots_txt": {
+   "status": 200,
+   "full": "User-agent: *\r\nDisallow: /ajax/*\r\nDisallow: /ucnews/*\r\nAllow: /\r\n\r\nUser-agent: facebookexternalhit\r\nDisallow: /api/\r\nAllow: /\r\n\r\nUser-agent: Twitterbot\r\nDisallow: /api/\r\nAllow: /\r\n\r\nUser-agent: BLP_bbot/0.1\r\nDisallow: /\r\n\r\nUser-agent: BLP_bbot\r\nDisallow: /\r\n\r\nUser-agent: ClaudeBot\r\nDisallow: /"
+  },
+  "robots_allows_edu_radar": true,
+  "http": 404,
+  "content_type": "text/html; charset=UTF-8",
+  "entries": 0,
+  "feed_title": null,
+  "sample": []
+ },
+ {
+  "url": "https://www.jpnn.com/index.php?mib=rss",
+  "robots_txt": {
+   "status": 200,
+   "full": "User-agent: *\nDisallow: /ajax/\nDisallow: /cdn-cgi/\nDisallow: /search?q=*\nDisallow: /jpnn_count/\nDisallow: /foto_count/\nDisallow: /video_count/\nDisallow: /adtest/\nDisallow: /partner/uc_browser/\nDisallow: /apollo_admin/\nDisallow: /apollo_global_admin/\nDisallow: /search/\nDisallow: /historiana\nDisallow: /pantulan\nDisallow: /jabodetabek\nDisallow: /tag/hd\n\nUser-agent: grapeshot\nDisallow:\n\nAllow: *\nAllow: /\nSitemap: https://www.jpnn.com/sitemap.xml\n"
+  },
+  "robots_allows_edu_radar": true,
+  "http": 200,
+  "content_type": "text/xml;charset=UTF-8",
+  "entries": 100,
+  "feed_title": "JPNN.com | Recent RSS Feed",
+  "sample": [
+   {
+    "title": "Kepala Bakom RI Sepertinya Benci Banget Sama Ucapan Gibran",
+    "link": "https://www.jpnn.com/news/kepala-bakom-ri-sepertinya-benci-banget-sama-ucapan-gibran",
+    "id": "https://www.jpnn.com/news/kepala-bakom-ri-sepertinya-benci-banget-sama-ucapan-gibran",
+    "published": "Wed, 11 Nov 2026 16:17:00 +0700",
+    "source": null,
+    "summary": "<img align=\"left\" height=\"90\" hspace=\"7\" src=\"https://cloud.jpnn.com/photo/arsip/normal/2025/04/08/pertemuan-rocky-gerung-sufmi-dasco-ahmad-jumhur-hidayat-ferr-"
+   },
+   {
+    "title": "Tak Ada Moratorium Ritel, Zulhas dan BSN Dorong Penguatan Produk Lokal",
+    "link": "https://jabar.jpnn.com/jabar-terkini/34272/tak-ada-moratorium-ritel-zulhas-dan-bsn-dorong-penguatan-produk-lokal",
+    "id": "https://jabar.jpnn.com/jabar-terkini/34272/tak-ada-moratorium-ritel-zulhas-dan-bsn-dorong-penguatan-produk-lokal",
+    "published": "Wed, 11 Nov 2026 16:16:00 +0700",
+    "source": null,
+    "summary": "<img align=\"left\" height=\"90\" hspace=\"7\" src=\"https://cloud.jpnn.com/photo/jatim/news/watermark/2026/11/11/menteri-koordinator-bidang-pangan-zulkifli-hasan-dala"
+   },
+   {
+    "title": "Jateng Tambah 12 Kawasan Industri Baru, Izin Segera Terbit",
+    "link": "https://www.jpnn.com/news/jateng-tambah-12-kawasan-industri-baru-izin-segera-terbit",
+    "id": "https://www.jpnn.com/news/jateng-tambah-12-kawasan-industri-baru-izin-segera-terbit",
+    "published": "Wed, 11 Nov 2026 16:13:03 +0700",
+    "source": null,
+    "summary": "<img align=\"left\" height=\"90\" hspace=\"7\" src=\"https://cloud.jpnn.com/photo/arsip/normal/2026/11/11/gubernur-jawa-tengah-ahmad-luthfi-pnwnf-r8gn.jpg\" width=\"120\""
+   },
+   {
+    "title": "Gagal Panen Akibat Banjir, Petani di 4 Kabupaten Jateng Terima Rp 7,81 Miliar",
+    "link": "https://jateng.jpnn.com/jateng-terkini/21658/gagal-panen-akibat-banjir-petani-di-4-kabupaten-jateng-terima-rp-781-miliar",
+    "id": "https://jateng.jpnn.com/jateng-terkini/21658/gagal-panen-akibat-banjir-petani-di-4-kabupaten-jateng-terima-rp-781-miliar",
+    "published": "Wed, 11 Nov 2026 16:10:00 +0700",
+    "source": null,
+    "summary": "<img align=\"left\" height=\"90\" hspace=\"7\" src=\"https://cloud.jpnn.com/photo/jatim/news/normal/2026/11/11/ilustrasi-seorang-petani-sedang-menuntun-sepeda-melintas"
+   },
+   {
+    "title": "WNA Pemilik Restoran di Sidoarjo Jadi Tersangka TPPO, 19 Pekerja Dieksploitasi",
+    "link": "https://jatim.jpnn.com/kriminal/50149/wna-pemilik-restoran-di-sidoarjo-jadi-tersangka-tppo-19-pekerja-dieksploitasi",
+    "id": "https://jatim.jpnn.com/kriminal/50149/wna-pemilik-restoran-di-sidoarjo-jadi-tersangka-tppo-19-pekerja-dieksploitasi",
+    "published": "Wed, 11 Nov 2026 16:10:00 +0700",
+    "source": null,
+    "summary": "<img align=\"left\" height=\"90\" hspace=\"7\" src=\"https://cloud.jpnn.com/photo/jatim/arsip/normal/2026/11/11/polisi-saat-merilis-pengungkapan-dugaan-tindak-pidana-p"
+   },
+   {
+    "title": "Syahganda Nainggolan Menghadap Presiden Selama 2 Jam, Lalu Bantah Pernyataan Gibran",
+    "link": "https://www.jpnn.com/news/syahganda-nainggolan-menghadap-presiden-selama-2-jam-lalu-bantah-pernyataan-gibran",
+    "id": "https://www.jpnn.com/news/syahganda-nainggolan-menghadap-presiden-selama-2-jam-lalu-bantah-pernyataan-gibran",
+    "published": "Wed, 11 Nov 2026 16:05:23 +0700",
+    "source": null,
+    "summary": "<img align=\"left\" height=\"90\" hspace=\"7\" src=\"https://cloud.jpnn.com/photo/arsip/normal/2026/11/11/kepala-badan-komunikasi-pemerintah-bakom-syahganda-nainggola-"
+   },
+   {
+    "title": "Kemenkum NTB Harmonisasi Raperda Sumbawa, Memperkuat Kepastian Hukum",
+    "link": "https://bali.jpnn.com/ntb-terkini/45585/kemenkum-ntb-harmonisasi-raperda-sumbawa-memperkuat-kepastian-hukum",
+    "id": "https://bali.jpnn.com/ntb-terkini/45585/kemenkum-ntb-harmonisasi-raperda-sumbawa-memperkuat-kepastian-hukum",
+    "published": "Wed, 11 Nov 2026 16:05:00 +0700",
+    "source": null,
+    "summary": "<img align=\"left\" height=\"90\" hspace=\"7\" src=\"https://cloud.jpnn.com/photo/bali/news/normal/2026/11/11/kanwil-kemenkum-ntb-melaksanakan-rapat-pengharmonisasian-"
+   },
+   {
+    "title": "Asuransi Sinar Mas Beri Perlindungan Gratis Kepada Ratusan Siswa & Guru di Ternate",
+    "link": "https://www.jpnn.com/news/asuransi-sinar-mas-beri-perlindungan-gratis-kepada-ratusan-siswa-guru-di-ternate",
+    "id": "https://www.jpnn.com/news/asuransi-sinar-mas-beri-perlindungan-gratis-kepada-ratusan-siswa-guru-di-ternate",
+    "published": "Wed, 11 Nov 2026 16:00:00 +0700",
+    "source": null,
+    "summary": "<img align=\"left\" height=\"90\" hspace=\"7\" src=\"https://cloud.jpnn.com/photo/arsip/normal/2023/08/04/pt-asuransi-sinar-mas-menggelar-kegiatan-literasi-keuangan-b-"
+   }
+  ]
+ },
+ {
+  "url": "https://www.suara.com/rss/edukasi",
+  "robots_txt": {
+   "status": 200,
+   "full": "User-agent: *\nDisallow: /demo/\nDisallow: /search?q=\nDisallow: /loadmoredetail?\nDisallow: /cdn-cgi/rum\nAllow: /\n\nSitemap: https://www.suara.com/sitemap.xml"
+  },
+  "robots_allows_edu_radar": true,
+  "http": 404,
+  "content_type": "text/html; charset=UTF-8",
+  "entries": 0,
+  "feed_title": null,
+  "sample": []
+ },
+ {
+  "url": "https://www.medcom.id/rss/terkini.xml",
+  "robots_txt": {
+   "status": 200,
+   "full": "User-agent: *\nAllow: /\nDisallow: /*/utm?\nDisallow: /stat/\nDisallow: /feed/uc_json/\n# Disallow: /search\n# Disallow: /kategori/\n\nUser-agent: ChatGPT-User\nDisallow: /\n\nUser-agent: OpenAI\nDisallow: /\n\nUser-agent: CCBot\nDisallow: /\n\nUser-agent: GPTBot\nDisallow: /\n\nSitemap: https://www.medcom.id/sitemap.xml\nSitemap: https://www.medcom.id/sitemap_latest.xml"
+  },
+  "robots_allows_edu_radar": true,
+  "http": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "entries": 0,
+  "feed_title": null,
+  "sample": []
+ },
+ {
+  "url": "https://lapi.kumparan.com/v2.0/rss/",
+  "robots_txt": {
+   "status": 404,
+   "full": "404 page not found\n"
+  },
+  "robots_allows_edu_radar": true,
+  "http": 200,
+  "content_type": "application/xml",
+  "entries": 25,
+  "feed_title": "kumparan - #kumparanAdalahJawaban",
+  "sample": [
+   {
+    "title": "ABK KM Dewi Samodra Tewas Ditusuk Rekannya di Perairan Kumai, Kalteng",
+    "link": "https://kumparan.com/kumparannews/abk-km-dewi-samodra-tewas-ditusuk-rekannya-di-perairan-kumai-kalteng-28YJccEDvrW",
+    "id": "https://kumparan.com/kumparannews/abk-km-dewi-samodra-tewas-ditusuk-rekannya-di-perairan-kumai-kalteng-28YJccEDvrW",
+    "published": "Wed, 11 Nov 2026 09:17:30 +0000",
+    "source": null,
+    "summary": "Insiden bermula ketika TR mendatangi WAP yang saat itu bertugas sebagai juru kemudi kapal. TR membawa dua bilah pisau dan meminta kapal diputar kembali menuju T"
+   },
+   {
+    "title": "IHSG Ditutup Melemah 0,21% ke 5.115 di Tengah Tekanan Rupiah",
+    "link": "https://kumparan.com/kumparanbisnis/ihsg-ditutup-melemah-0-21-ke-5-115-di-tengah-tekanan-rupiah-28YJXfbuHw3",
+    "id": "https://kumparan.com/kumparanbisnis/ihsg-ditutup-melemah-0-21-ke-5-115-di-tengah-tekanan-rupiah-28YJXfbuHw3",
+    "published": "Wed, 11 Nov 2026 09:14:57 +0000",
+    "source": null,
+    "summary": "IHSG sore ini berakhir di zona merah. Berikut kondisi bursa Asia. #bisnisupdate #update #bisnis #text"
+   },
+   {
+    "title": "Pemerintah Tetapkan Alokasi Kredit 2027 Rp 394 T, Paling Banyak untuk KUR",
+    "link": "https://kumparan.com/kumparanbisnis/pemerintah-tetapkan-alokasi-kredit-2027-rp-394-t-paling-banyak-untuk-kur-28YIqTaeksB",
+    "id": "https://kumparan.com/kumparanbisnis/pemerintah-tetapkan-alokasi-kredit-2027-rp-394-t-paling-banyak-untuk-kur-28YIqTaeksB",
+    "published": "Wed, 11 Nov 2026 09:16:03 +0000",
+    "source": null,
+    "summary": "Dari target pembiayaan kredit tahun lalu, KUR paling tinggi Rp 325 T. #bisnisupdate #update #bisnis #text"
+   },
+   {
+    "title": "HIVI! Ungkap Cerita di Balik Lagu Orang Ketiga, Ternyata Bukan soal Perselingkuhan",
+    "link": "https://kumparan.com/kumparanhits/hivi-ungkap-cerita-di-balik-lagu-orang-ketiga-ternyata-bukan-soal-perselingkuhan-28XWX51BPZF",
+    "id": "https://kumparan.com/kumparanhits/hivi-ungkap-cerita-di-balik-lagu-orang-ketiga-ternyata-bukan-soal-perselingkuhan-28XWX51BPZF",
+    "published": "Wed, 11 Nov 2026 09:10:37 +0000",
+    "source": null,
+    "summary": "HIVI! mengungkap cerita di balik lagu Orang Ketiga yang kembali menarik perhatian pendengar.#kumparanHITS #newsupdate"
+   },
+   {
+    "title": "BI Kembalikan Rp 149,3 T Dana Bank untuk UMKM dan Perumahan",
+    "link": "https://kumparan.com/kumparanbisnis/bi-kembalikan-rp-149-3-t-dana-bank-untuk-umkm-dan-perumahan-28YJNOCJngV",
+    "id": "https://kumparan.com/kumparanbisnis/bi-kembalikan-rp-149-3-t-dana-bank-untuk-umkm-dan-perumahan-28YJNOCJngV",
+    "published": "Wed, 11 Nov 2026 09:10:21 +0000",
+    "source": null,
+    "summary": "BI mengembalikan dana perbankan yang sebelumnya ditempatkan di bank sentral sebesar Rp 149,3 triliun untuk mendukung pembiayaan sektor UMKM dan perumahan. #bisn"
+   },
+   {
+    "title": "Pesan Alen Stajcic buat Suporter Timnas Wanita Indonesia: Target Saya Tinggi!",
+    "link": "https://kumparan.com/kumparanbolanita/pesan-alen-stajcic-buat-suporter-timnas-wanita-indonesia-target-saya-tinggi-28YJPPpzSw0",
+    "id": "https://kumparan.com/kumparanbolanita/pesan-alen-stajcic-buat-suporter-timnas-wanita-indonesia-target-saya-tinggi-28YJPPpzSw0",
+    "published": "Wed, 11 Nov 2026 09:07:50 +0000",
+    "source": null,
+    "summary": "\"Apa pun KPI yang ditetapkan untuk saya di sini, target pribadi saya jauh lebih tinggi,\" kata pelatih Timnas Wanita Indonesia, Alen Stajcic, pada kumparanBOLANI"
+   },
+   {
+    "title": "Capaian 2 Tahun Pemerintahan Prabowo, Kemenkes Ungkap Cek Kesehatan Gratis Jangkau 114 Juta Orang",
+    "link": "https://kumparan.com/kumparannews/capaian-2-tahun-pemerintahan-prabowo-kemenkes-ungkap-cek-kesehatan-gratis-jangkau-114-juta-orang-28YJRm1hBxx",
+    "id": "https://kumparan.com/kumparannews/capaian-2-tahun-pemerintahan-prabowo-kemenkes-ungkap-cek-kesehatan-gratis-jangkau-114-juta-orang-28YJRm1hBxx",
+    "published": "Wed, 11 Nov 2026 09:09:40 +0000",
+    "source": null,
+    "summary": "Program Cek Kesehatan Gratis (CKG) menjadi salah satu dari tiga prioritas Presiden Prabowo di bidang kesehatan. Program itu telah menjangkau 114 juta orang. #ne"
+   },
+   {
+    "title": "Rapat Penanganan Bencana, Layanan Publik Pulih 100%, Rehabilitasi Hingga 2028",
+    "link": "https://kumparan.com/kumparannews/rapat-penanganan-bencana-layanan-publik-pulih-100-rehabilitasi-hingga-2028-28YJQQm6c7m",
+    "id": "https://kumparan.com/kumparannews/rapat-penanganan-bencana-layanan-publik-pulih-100-rehabilitasi-hingga-2028-28YJQQm6c7m",
+    "published": "Wed, 11 Nov 2026 09:05:53 +0000",
+    "source": null,
+    "summary": "Mendagri Tito Karnavian melaporkan seluruh layanan publik terdampak bencana di Sumatera telah pulih 100 persen, sementara rehabilitasi dan rekonstruksi fisik di"
+   }
+  ]
+ },
+ {
+  "url": "https://www.kemdiktisaintek.go.id/feed",
+  "robots_txt": {
+   "status": 404,
+   "full": "<!DOCTYPE html><html lang=\"en\"><head><meta charSet=\"utf-8\" data-next-head=\"\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=5\" data-next-head=\"\"/><title data-next-head=\"\">Kementerian Pendidikan Tinggi, Sains, dan Teknologi</title><meta name=\"description\" content=\"Laman Utama Kementerian Pendidikan Tinggi, Sains, dan Teknologi\" data-next-head=\"\"/><link rel=\"preload\" href=\"/_next/static/chunks/3or944p8_40f8.css\" as=\"style\"/><link rel=\"preload\" href=\"/_next/static/chunks/22r45i7cmhs_4.css\" as=\"style\"/><link rel=\"preload\" href=\"/_next/static/chunks/2pnuhzrq-vdlz.css\" as=\"style\"/><a rel=\"icon\" data-next-head=\"\" href=\"/kemdiktisaintek-logo.svg\"></a><link rel=\"stylesheet\" href=\"/_next/static/chunks/3or944p8_40f8.css\" data-n-g=\"\"/><link rel=\"stylesheet\" href=\"/_next/static/chunks/22r45i7cmhs_4.css\" data-n-g=\"\"/><link rel=\"stylesheet\" href=\"/_next/static/chunks/2pnuhzrq-vdlz.css\" data-n-g=\"\"/><noscript data-n-css=\"\"></noscript><script>(globalThis[\"TURBOPACK\"] || (globalThis[\"TURBOPACK\"] = [])).push({\"otherChunks\":[\"static/chunks/0a8mipgrb6zde.js\",\"static/chunks/21pznhwv8m-b0.js\",\"static/chunks/1phu37o85ui8k.js\",\"static/chunks/16qz2p0n3wt8t.js\",\"static/chunks/0l8km5mkblcnp.js\",\"static/chunks/3v4denphcit5v.js\",\"static/chunks/3or944p8_40f8.css\",\"static/chunks/22r45i7cmhs_4.css\",\"static/chunks/2pnuhzrq-vdlz.css\"],\"runtimeModuleIds\":[10783,88709]});\n(globalThis[\"TURBOPACK\"] || (globalThis[\"TURBOPACK\"] = [])).push({\"otherChunks\":[\"static/chunks/0ex6cca4ipl8f.js\"],\"runtimeModuleIds\":[10783,52043]});</script><script src=\"/_next/static/chunks/0a8mipgrb6zde.js\" defer=\"\"></script><script src=\"/_next/static/chunks/21pznhwv8m-b0.js\" defer=\"\"></script><script src=\"/_next/static/chunks/1phu37o85ui8k.js\" defer=\"\"></script><script src=\"/_next/static/chunks/16qz2p0n3wt8t.js\" defer=\"\"></script><script src=\"/_next/static/chunks/0l8km5mkblcnp.js\" defer=\"\"></script><script src=\"/_next/static/chunks/3v4denphcit5v.js\" defer=\"\"></script><script src=\"/_next/static/chunks/turbopack-2c3mg3r-05n1w.js\" defer=\"\"></script><script src=\"/_next/static/chunks/0ex6cca4ipl8f.js\" defer=\"\"></script><script src=\"/_next/static/MAAMFsAV1X9GoF103ikOF/_buildManifest.js\" defer=\"\"></script><script src=\"/_next/static/MAAMFsAV1X9GoF103ikOF/_ssgManifest.js\" defer=\"\"></script><script src=\"/_next/static/MAAMFsAV1X9GoF103ikOF/_clientMiddlewareManifest.js\" defer=\"\"></script></head><body class=\"antialiased\"><div id=\"__next\"><style>\n    #nprogress {\n      pointer-events: none;\n    }\n    #nprogress .bar {\n      background: #29D;\n      position: fixed;\n      z-index: 9999;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 3px;\n    }\n    #nprogress .peg {\n      display: block;\n      position: absolute;\n      right: 0px;\n      width: 100px;\n      height: 100%;\n      box-shadow: 0 0 10px #29D, 0 0 5px #29D;\n      opacity: 1;\n      -webkit-transform: rotate(3deg) translate(0px, -4px);\n      -ms-transform: rotate(3deg) translate(0px, -4px);\n      transform: rotate(3deg)"
+  },
+  "robots_allows_edu_radar": true,
+  "http": 404,
+  "content_type": "text/html; charset=utf-8",
+  "entries": 0,
+  "feed_title": null,
+  "sample": []
+ },
+ {
+  "url": "https://www.kemdiktisaintek.go.id/rss",
+  "robots_txt": {
+   "status": 404,
+   "full": "<!DOCTYPE html><html lang=\"en\"><head><meta charSet=\"utf-8\" data-next-head=\"\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=5\" data-next-head=\"\"/><title data-next-head=\"\">Kementerian Pendidikan Tinggi, Sains, dan Teknologi</title><meta name=\"description\" content=\"Laman Utama Kementerian Pendidikan Tinggi, Sains, dan Teknologi\" data-next-head=\"\"/><link rel=\"preload\" href=\"/_next/static/chunks/3or944p8_40f8.css\" as=\"style\"/><link rel=\"preload\" href=\"/_next/static/chunks/22r45i7cmhs_4.css\" as=\"style\"/><link rel=\"preload\" href=\"/_next/static/chunks/2pnuhzrq-vdlz.css\" as=\"style\"/><a rel=\"icon\" data-next-head=\"\" href=\"/kemdiktisaintek-logo.svg\"></a><link rel=\"stylesheet\" href=\"/_next/static/chunks/3or944p8_40f8.css\" data-n-g=\"\"/><link rel=\"stylesheet\" href=\"/_next/static/chunks/22r45i7cmhs_4.css\" data-n-g=\"\"/><link rel=\"stylesheet\" href=\"/_next/static/chunks/2pnuhzrq-vdlz.css\" data-n-g=\"\"/><noscript data-n-css=\"\"></noscript><script>(globalThis[\"TURBOPACK\"] || (globalThis[\"TURBOPACK\"] = [])).push({\"otherChunks\":[\"static/chunks/0a8mipgrb6zde.js\",\"static/chunks/21pznhwv8m-b0.js\",\"static/chunks/1phu37o85ui8k.js\",\"static/chunks/16qz2p0n3wt8t.js\",\"static/chunks/0l8km5mkblcnp.js\",\"static/chunks/3v4denphcit5v.js\",\"static/chunks/3or944p8_40f8.css\",\"static/chunks/22r45i7cmhs_4.css\",\"static/chunks/2pnuhzrq-vdlz.css\"],\"runtimeModuleIds\":[10783,88709]});\n(globalThis[\"TURBOPACK\"] || (globalThis[\"TURBOPACK\"] = [])).push({\"otherChunks\":[\"static/chunks/0ex6cca4ipl8f.js\"],\"runtimeModuleIds\":[10783,52043]});</script><script src=\"/_next/static/chunks/0a8mipgrb6zde.js\" defer=\"\"></script><script src=\"/_next/static/chunks/21pznhwv8m-b0.js\" defer=\"\"></script><script src=\"/_next/static/chunks/1phu37o85ui8k.js\" defer=\"\"></script><script src=\"/_next/static/chunks/16qz2p0n3wt8t.js\" defer=\"\"></script><script src=\"/_next/static/chunks/0l8km5mkblcnp.js\" defer=\"\"></script><script src=\"/_next/static/chunks/3v4denphcit5v.js\" defer=\"\"></script><script src=\"/_next/static/chunks/turbopack-2c3mg3r-05n1w.js\" defer=\"\"></script><script src=\"/_next/static/chunks/0ex6cca4ipl8f.js\" defer=\"\"></script><script src=\"/_next/static/MAAMFsAV1X9GoF103ikOF/_buildManifest.js\" defer=\"\"></script><script src=\"/_next/static/MAAMFsAV1X9GoF103ikOF/_ssgManifest.js\" defer=\"\"></script><script src=\"/_next/static/MAAMFsAV1X9GoF103ikOF/_clientMiddlewareManifest.js\" defer=\"\"></script></head><body class=\"antialiased\"><div id=\"__next\"><style>\n    #nprogress {\n      pointer-events: none;\n    }\n    #nprogress .bar {\n      background: #29D;\n      position: fixed;\n      z-index: 9999;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 3px;\n    }\n    #nprogress .peg {\n      display: block;\n      position: absolute;\n      right: 0px;\n      width: 100px;\n      height: 100%;\n      box-shadow: 0 0 10px #29D, 0 0 5px #29D;\n      opacity: 1;\n      -webkit-transform: rotate(3deg) translate(0px, -4px);\n      -ms-transform: rotate(3deg) translate(0px, -4px);\n      transform: rotate(3deg)"
+  },
+  "robots_allows_edu_radar": true,
+  "http": 404,
+  "content_type": "text/html; charset=utf-8",
+  "entries": 0,
+  "feed_title": null,
+  "sample": []
+ },
+ {
+  "url": "https://snpmb.id/feed",
+  "robots_txt": {
+   "status": 200,
+   "full": "User-agent: *\nDisallow: /.github/\nDisallow: /.phan/\nDisallow: /assets/\nDisallow: /backup/\nDisallow: /bin/\nDisallow: /cache/\nDisallow: /logs/\nDisallow: /system/\nDisallow: /tests/\nDisallow: /tmp/\nDisallow: /user/\nDisallow: /vendor/\nDisallow: /webserver-configs/\nAllow: /user/pages/\nAllow: /user/themes/\nAllow: /user/images/\nAllow: /\nAllow: *.css$\nAllow: *.js$\nAllow: /system/*.js$\n"
+  },
+  "robots_allows_edu_radar": true,
+  "http": 404,
+  "content_type": "text/html;charset=UTF-8",
+  "entries": 0,
+  "feed_title": null,
+  "sample": []
+ },
+ {
+  "url": "https://www.beritasatu.com/rss",
+  "robots_txt": {
+   "status": 200,
+   "full": "User-agent: *\nDisallow: /search/\nDisallow: /widgets/\nDisallow: /network/\n\nUser-agent: CCBot\nDisallow: /\n\nUser-agent: Scrapy\nDisallow: /\n\nUser-agent: YouBot\nDisallow: /\n\nUser-agent: FriendlyCrawler\nDisallow: /\n\nUser-agent: AudigentAdBot\nDisallow: /\n\nUser-agent: Meta-ExternalAgent\nDisallow: /\n\nUser-agent: news-please\nDisallow: /\n\nUser-agent: omgilibot\nDisallow: /\n\nUser-agent: omgili\nDisallow: /\n\nUser-agent: Bytespider\nDisallow: /\n\nUser-agent: Paqlebot\nDisallow: /\n\nUser-agent: peer39_crawler\nDisallow: /\n\nSitemap: https://www.beritasatu.com/sitemap.xml"
+  },
+  "robots_allows_edu_radar": true,
+  "http": 404,
+  "content_type": "text/html",
+  "entries": 0,
+  "feed_title": null,
+  "sample": []
+ },
+ {
+  "url": "https://www.merdeka.com/feed/",
+  "robots_txt": {
+   "status": 200,
+   "full": "User-agent: *\r\nDisallow: /ucnews/\r\nDisallow: /search/*\r\nDisallow: */index*\r\nDisallow: */?\r\nDisallow: /*?\r\nDisallow: /*comment*\r\nDisallow: *?source=*\r\nDisallow: ?mvk_page*\r\nDisallow: ?param_mvk*\r\nDisallow: /3650493/\r\nDisallow: /36504930/\r\n\r\nUser-agent: Twitterbot\r\nAllow: /\r\n\r\nUser-agent: facebookexternalhit\r\nAllow: /\r\n\r\nSitemap: https://www.merdeka.com/sitemap.xml"
+  },
+  "robots_allows_edu_radar": true,
+  "http": 404,
+  "content_type": "text/html; charset=UTF-8",
+  "entries": 0,
+  "feed_title": null,
+  "sample": []
+ }
+]
