@@ -1,0 +1,38 @@
+name: probe
+
+# Manual. Cek URL dari IP Actions dan simpan hasil ke branch "probe" (force push).
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: "URL (satu per baris). Kosong = daftar bawaan di tools/probe.py"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python tools/probe.py
+        env:
+          PROBE_URLS: ${{ github.event.inputs.urls }}
+      - name: Simpan hasil ke branch probe
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          rm -rf /tmp/pr && mkdir /tmp/pr && cp probe.json /tmp/pr/
+          cd /tmp/pr
+          git init -q -b probe
+          git add probe.json
+          git -c user.name=edu-radar -c user.email=edu-radar@users.noreply.github.com commit -qm "probe"
+          git push -q -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" probe

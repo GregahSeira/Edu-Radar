@@ -1,0 +1,59 @@
+# Set uji emas filter berita. Tiap baris: t = judul, y = hasil yang diharapkan.
+#   lolos = masuk #berita, abu = masuk #lain (senyap), buang = tidak dikirim.
+# Tambah baris baru tiap ada salah klasifikasi, lalu setel sources.yml sampai semua lolos uji.
+# Jalankan: python tests/test_filter.py
+cases:
+  # ---- lolos ----
+  - {t: "Pendaftaran SNBT 2027 Dibuka Februari, Ini Syarat dan Jadwalnya", y: lolos}
+  - {t: "Jadwal UTBK 2027 Resmi Diumumkan Panitia SNPMB", y: lolos}
+  - {t: "KIP Kuliah 2027 Dibuka untuk Siswa SMA, Ini Cara Daftarnya", y: lolos}
+  - {t: "Kuota SNBP 2027 Turun, Sekolah Diminta Segera Isi PDSS", y: lolos}
+  - {t: "Jalur Mandiri PTN 2027: UGM dan UI Umumkan Biaya", y: lolos}
+  - {t: "UKT PTN Naik, Calon Mahasiswa Baru Jalur Mandiri Keberatan", y: lolos}
+  - {t: "Penjurusan SMA Berlaku Lagi pada 2027, Kemendikdasmen: Fleksibel Pindah Jurusan", y: lolos}
+  - {t: "DPR-MPR Dukung Penjurusan SMA Kembali, Soroti Kesiapan Guru-Minat Siswa", y: lolos}
+  - {t: "Tercatat 377 Dugaan Kasus Pelanggaran TKA SMA/SMK, Siapa yang Akan Dapat Sanksi?", y: lolos}
+  - {t: "Hasil TKA SMA Dipakai untuk Seleksi Masuk PTN", y: lolos}
+  - {t: "Beasiswa untuk Lulusan SMA yang Masuk PTN Dibuka", y: lolos}
+  - {t: "Daya Tampung PTN 2027 Naik, Seleksi Nasional Berbasis Prestasi Diperluas", y: lolos}
+  - {t: "SPAN-PTKIN 2027 Dibuka, Kuota Capai 30 Ribu", y: lolos}
+  - {t: "UM-PTKIN 2027: Jadwal dan Syarat Pendaftaran", y: lolos}
+  - {t: "Sekolah Kedinasan 2027: Daftar PDSS Dibuka", y: lolos}
+  - {t: "Tes Kemampuan Akademik Jadi Syarat SNBP, Ini Penjelasan Kemdiktisaintek", y: lolos}
+  - {t: "Pendaftaran Seleksi Mandiri UNS 2027 Mulai Dibuka", y: lolos}
+  - {t: "Peserta Didik Kelas 12 Wajib Daftar Akun SNPMB", y: lolos}
+  - {t: "Kuliah Gratis di PTN, Calon Mahasiswa Baru Bisa Daftar Lewat Jalur Prestasi", y: lolos}
+  - {t: "Penerimaan Mahasiswa Baru PTN 2027 Pakai Nilai TKA", y: lolos}
+
+  # ---- abu (senyap ke #lain) ----
+  - {t: "Bersiap! Pendaftaran TKA SD-SMP 2027 Dimulai Januari, Ujian Maret-April", y: abu}
+  - {t: "Ada Komplain Terkait TKA 2026, Ombudsman Buka Posko Pengaduan", y: abu}
+  - {t: "Beasiswa Kuliah Gratis Politeknik Astra 2027 Dibuka, Gap Year Bisa Daftar", y: abu}
+  - {t: "Cerita Winona Raih Beasiswa EMJM Kuliah di Eropa", y: abu}
+  - {t: "Mau Daftar Beasiswa LPDP? Pilihan Jurusan S2 Tak Wajib Linier dengan S1", y: abu}
+  - {t: "Rektor PTN Soroti Biaya Kuliah yang Makin Mahal", y: abu}
+
+  # ---- buang ----
+  - {t: "Prabowo Kunjungan Kerja ke Aceh, Resmikan Masjid Giok dan Sekolah Rakyat", y: buang}
+  - {t: "Perpaduan Budaya dan Teknologi, Robot Gamelan Karya Udinus Hadir di KSTI 2026", y: buang}
+  - {t: "UGM Pastikan Keamanan Lingkungan Kampus Usai Aksi Demo 10 November", y: buang}
+  - {t: "Mahasiswa UI Demo Tolak Kenaikan Biaya", y: buang}
+  - {t: "Wah! Namjoon Leader BTS Jadi Mata Kuliah di Stanford University", y: buang}
+  - {t: "CPNS 2026 Dibuka November, Sekolah Garuda hingga Polisi Hutan Masuk Prioritas", y: buang}
+  - {t: "Digoyang Isu Mundur, Wapres Gibran Posting Kegiatan soal Pendidikan", y: buang}
+  - {t: "Kemdiktisaintek Terbitkan Aturan Baru soal Akreditasi Jurnal Ilmiah", y: buang}
+  - {t: "Mendikdasmen Bagi Jurus 4C untuk Tetap Hebat di Tengah AI, Siswa Ayo Terapkan", y: buang}
+  - {t: "Pemerintah Tolak Masuknya TKA China Ilegal di Smelter", y: buang}
+  - {t: "Bank Mandiri Buka Lowongan Besar-besaran", y: buang}
+  - {t: "Contoh Soal UTBK 2026 Beserta Kunci Jawaban", y: buang}
+  - {t: "Try Out SNBT Gratis, Ikuti Bimbel Online", y: buang}
+  - {t: "Seleksi Calon Rektor PTN Dibuka Panitia", y: buang}
+  - {t: "Seleksi Dosen Baru PTN Dibuka, Ini Syaratnya", y: buang}
+  - {t: "SPMB SMA Jakarta Tahap 2 Dibuka, Ini Jadwalnya", y: buang}
+  - {t: "Timnas Indonesia Lolos Putaran Final", y: buang}
+  - {t: "Resmikan Sekolah Baru, Kepala Daerah Pastikan Siswa Belajar Nyaman", y: buang}
+  - {t: "Pemkot Resmikan Gedung Perpustakaan Kampus Swasta", y: buang}
+
+  # ---- tautan halaman (mode links): host tidak boleh ikut dicek ----
+  - {t: "Perpaduan Budaya dan Teknologi, Robot Gamelan Karya Udinus Hadir di KSTI 2026 | https://www.kemdiktisaintek.go.id/news/article/perpaduan-budaya-dan-teknologi-robot-gamelan-karya-udinus-hadir-di-ksti-2", y: buang, link: true}
+  - {t: "Pendaftaran SNBT 2027 Dibuka | https://www.kemdiktisaintek.go.id/news/article/pendaftaran-snbt-2027-dibuka", y: lolos, link: true}

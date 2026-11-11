@@ -41,6 +41,7 @@ jobs:
           DISCORD_WEBHOOK_RESMI: ${{ secrets.DISCORD_WEBHOOK_RESMI }}
           DISCORD_WEBHOOK_BERITA: ${{ secrets.DISCORD_WEBHOOK_BERITA }}
           DISCORD_WEBHOOK_SISTEM: ${{ secrets.DISCORD_WEBHOOK_SISTEM }}
+          DISCORD_WEBHOOK_LAIN: ${{ secrets.DISCORD_WEBHOOK_LAIN }}
           HC_URL: ${{ secrets.HC_URL }}
 
       # State disimpan sebagai 1 commit di branch "state" (force push), jadi riwayat tidak membengkak.

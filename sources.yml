@@ -4,9 +4,15 @@
 # page mode: text (default, bandingkan baris teks) | links (bandingkan daftar tautan).
 # ignore_regex: buang baris dinamis (hitungan, tanggal hari ini) agar tidak false alarm.
 
+# Berita abu-abu (topik tanpa penanda SMA/proses masuk) dikirim senyap ke channel ini.
+# Butuh secret DISCORD_WEBHOOK_LAIN. Tanpa secret itu, berita abu-abu dilewati.
+gray_channel: lain
+
 filters:
   # Satu aturan untuk semua berita (edu dan strict sama): khusus SMA sederajat dan seputar masuk PTN.
-  # Lolos kalau: tidak kena exclude, DAN (kena core ATAU (kena topic DAN kena anchor)).
+  # 2 lolos : tidak kena exclude, DAN (kena core ATAU (kena topic DAN kena anchor)).
+  # 1 abu   : tidak kena exclude, kena topic tanpa anchor, ATAU kena weak. Dikirim senyap ke #lain.
+  # 0 buang : sisanya.
   # Teks yang dicek: judul + deskripsi + slug URL (host tidak ikut).
   edu: &masuk_ptn
     # core: kata inti yang jelas soal masuk PTN. Cukup satu untuk lolos.
@@ -31,6 +37,8 @@ filters:
       - 'seleksi masuk (ptn|perguruan tinggi)'
       - 'masuk (ptn|perguruan tinggi)'
       - 'kuliah di ptn'
+      - '\btka\b[^.]{0,40}\b(sma|smk|sman|smkn|sederajat)\b'
+      - '\b(sma|smk|sman|smkn|sederajat)\b[^.]{0,40}\btka\b'
     # topic: kata ambigu. Harus ditemani salah satu anchor.
     topic:
       - '\bptn\b'
@@ -41,7 +49,6 @@ filters:
       - '\bmaba\b'
       - 'mahasiswa baru'
       - 'beasiswa'
-      - '\btka\b'
       - 'kuliah gratis'
       - 'penjurusan'
       - 'sisdiknas'
@@ -52,6 +59,8 @@ filters:
     anchor:
       - '\bsma\b'
       - '\bsmk\b'
+      - '\bsman\b'
+      - '\bsmkn\b'
       - '\bsederajat\b'
       - 'kelas 12'
       - 'kelas xii'
@@ -64,6 +73,9 @@ filters:
       - 'kuota'
       - 'jalur'
       - 'registrasi'
+    # weak: kata ambigu yang tidak boleh lolos sendirian, hanya abu-abu. TKA = tes akademik atau tenaga kerja asing.
+    weak:
+      - '\btka\b'
     exclude:
       - 'contoh soal'
       - 'latihan soal'
@@ -84,6 +96,10 @@ filters:
       - 'hak menyatakan pendapat'
       - 'penyadapan'
       - 'timnas'
+      - 'tenaga kerja asing'
+      - '\btka\b (china|cina|tiongkok|asing|ilegal)'
+      - '(pemilihan|seleksi|calon) rektor'
+      - '(seleksi|rekrutmen|penerimaan) (dosen|guru|pegawai)'
   strict: *masuk_ptn
 
 sources:

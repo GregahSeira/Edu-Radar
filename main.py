@@ -29,11 +29,14 @@ SKIP_ROBOTS = os.environ.get("SKIP_ROBOTS") == "1"  # hanya untuk tes lokal
 
 FAIL_LIMIT = 3  # run gagal/kosong berturut-turut sebelum alert
 MAX_NOTIFY = 15  # batas notif per sumber per run
+MAX_GRAY = 8  # batas notif abu-abu per sumber per run
 MAX_SEEN = 1500
 MAX_TITLES = 4000
 MAX_HASHES = 4000
 GRACE = 120  # detik toleransi interval (hanya untuk sumber dengan every)
 WORKERS = 8
+GRAY_CHANNEL = None  # diisi dari sources.yml (gray_channel)
+GRAY_ON = False  # aktif hanya jika webhook channel itu ada (atau DRY_RUN)
 
 
 def log(*a):
@@ -61,7 +64,7 @@ def save_state(st):
 
 
 # ---------- discord ----------
-def notify(channel, label, title, body="", link=""):
+def notify(channel, label, title, body="", link="", silent=False):
     parts = [f"[{label}] {title}".strip()]
     if body:
         parts.append(body)
@@ -74,11 +77,10 @@ def notify(channel, label, title, body="", link=""):
         return True
     for _ in range(3):
         try:
-            r = requests.post(
-                hook,
-                json={"content": msg, "allowed_mentions": {"parse": []}},
-                timeout=20,
-            )
+            payload = {"content": msg, "allowed_mentions": {"parse": []}}
+            if silent:
+                payload["flags"] = 4096 | 4  # tanpa notifikasi dan tanpa pratinjau tautan
+            r = requests.post(hook, json=payload, timeout=20)
             if r.status_code == 429:
                 time.sleep(float(r.json().get("retry_after", 2)) + 0.5)
                 continue
@@ -151,25 +153,42 @@ def compile_filters(raw):
     for name, d in (raw or {}).items():
         out[name] = {
             k: (re.compile("|".join(d[k]), re.I) if d.get(k) else None)
-            for k in ("core", "topic", "anchor", "exclude")
+            for k in ("core", "topic", "anchor", "weak", "exclude")
         }
     return out
 
 
-def passes(f, text):
+def classify(f, text):
+    """2 = lolos, 1 = abu-abu (topik tanpa penanda, kirim senyap), 0 = buang."""
     if f is None:
-        return True
+        return 2
     if f["exclude"] and f["exclude"].search(text):
-        return False
+        return 0
     if f["core"] and f["core"].search(text):
-        return True
-    if f["topic"] and f["anchor"]:
-        return bool(f["topic"].search(text) and f["anchor"].search(text))
-    return False
+        return 2
+    if f["topic"] and f["topic"].search(text):
+        return 2 if (f["anchor"] and f["anchor"].search(text)) else 1
+    if f["weak"] and f["weak"].search(text):
+        return 1
+    return 0
+
+
+def passes(f, text):
+    return classify(f, text) == 2
 
 
 def slug_of(link):
     return re.sub(r"[-_/]+", " ", urlparse(link).path).lower()
+
+
+def split_outlet(title, e):
+    """Google News: judul berakhiran " - Nama Media". Pisahkan agar dedup lintas media jalan."""
+    outlet = ((e.get("source") or {}).get("title") or "").strip()
+    if outlet and title.endswith(" - " + outlet):
+        title = title[: -len(outlet) - 3]
+    elif " - " in title:
+        title, _, outlet = title.rpartition(" - ")
+    return title.strip(), outlet.strip()
 
 
 def filter_text(item):
@@ -212,19 +231,26 @@ def run_rss(src, st, filters, body):
         f = filters.get(src.get("filter")) if src.get("filter") else None
         hf = filters.get(src.get("host_filter")) if src.get("host_filter") else None
         hosts = src.get("host_match") or []
-        hits = []
+        hits, gray, batch = [], [], set()
         for eid, e in reversed(new):
             link = e.get("link", "")
             title = (e.get("title") or "").strip()
-            summ = clean(e.get("summary", ""))
-            text = f"{title} {summ} {slug_of(link)}"
+            if src.get("strip_outlet"):
+                title, summ = split_outlet(title, e)
+                slug = ""  # tautan Google berupa token acak, jangan dicek filter
+            else:
+                summ = clean(e.get("summary", ""))
+                slug = slug_of(link)
+            text = f"{title} {summ} {slug}"
             use = hf if (hosts and any(urlparse(link).netloc.endswith(h) for h in hosts)) else f
-            if not passes(use, text):
+            tier = classify(use, text)
+            if tier == 0 or (tier == 1 and not GRAY_ON):
                 continue
             key = norm_title(title)
-            if key and key in st["titles"]:
+            if key and (key in st["titles"] or key in batch):
                 continue
-            hits.append((eid, title, summ, link, key))
+            batch.add(key)
+            (hits if tier == 2 else gray).append((eid, title, summ, link, key))
         for eid, title, summ, link, key in hits[:MAX_NOTIFY]:
             if notify(src["channel"], src["label"], title, summ, link):
                 if key:
@@ -233,7 +259,15 @@ def run_rss(src, st, filters, body):
                 failed.add(eid)  # Discord gagal: biarkan belum terlihat, coba lagi run depan
         if len(hits) > MAX_NOTIFY:
             notify(src["channel"], src["label"], f"+{len(hits) - MAX_NOTIFY} berita lain dari {src['name']}")
-        log(f"[{sid}] baru={len(new)} lolos={len(hits)} gagal_kirim={len(failed)}")
+        for eid, title, summ, link, key in gray[:MAX_GRAY]:
+            if notify(GRAY_CHANNEL, "LAIN", title, summ, link, silent=True):
+                if key:
+                    st["titles"].append(key)
+            else:
+                failed.add(eid)
+        if len(gray) > MAX_GRAY:
+            log(f"[{sid}] abu-abu dipotong: {len(gray) - MAX_GRAY} tidak dikirim")
+        log(f"[{sid}] baru={len(new)} lolos={len(hits)} abu={len(gray)} gagal_kirim={len(failed)}")
     seen.extend(eid for eid, _ in new if eid not in failed)
     st["seen"][sid] = seen[-MAX_SEEN:]
 
@@ -325,6 +359,9 @@ def main():
     with open(SOURCES_PATH, encoding="utf-8") as f:
         cfg = yaml.safe_load(f)
     filters = compile_filters(cfg.get("filters"))
+    global GRAY_CHANNEL, GRAY_ON
+    GRAY_CHANNEL = cfg.get("gray_channel")
+    GRAY_ON = bool(GRAY_CHANNEL) and (DRY or bool(os.environ.get("DISCORD_WEBHOOK_" + GRAY_CHANNEL.upper())))
     st = load_state()
     now = int(time.time())
     todo = [
