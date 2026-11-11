@@ -1,0 +1,182 @@
+# edu-radar: daftar sumber.
+# type: rss | page. Semua sumber dicek tiap run (15 menit, dipicu cron-job.org). every: menit (opsional) hanya untuk sumber yang sengaja dijarangkan.
+# channel: resmi | berita | sistem (nama webhook Discord).
+# page mode: text (default, bandingkan baris teks) | links (bandingkan daftar tautan).
+# ignore_regex: buang baris dinamis (hitungan, tanggal hari ini) agar tidak false alarm.
+
+filters:
+  # Longgar: untuk feed pendidikan (detikEdu, host edukasi Okezone).
+  edu:
+    core:
+      - '\bsnpmb\b'
+      - '\butbk\b'
+      - '\bsnbt\b'
+      - '\bsnbp\b'
+      - 'kip[- ]kuliah'
+      - '\btka\b'
+      - '\bptkin\b'
+      - 'span[- ]?ptkin'
+      - 'um[- ]?ptkin'
+      - 'seleksi mandiri'
+      - 'jalur mandiri'
+      - '\bspmb\b'
+      - '\bpdss\b'
+      - 'penerimaan mahasiswa baru'
+      - 'sekolah kedinasan'
+      - '\blpdp\b'
+      - 'sisdiknas'
+      - 'uang kuliah tunggal'
+      - '\bukt\b'
+      - 'penjurusan'
+      - 'tes kemampuan akademik'
+      - 'beasiswa'
+      - 'kemendikdasmen'
+      - 'kemdiktisaintek'
+      - 'mendikdasmen'
+      - 'mendiktisaintek'
+      - 'kurikulum'
+      - 'perguruan tinggi negeri'
+      - '\bptn\b'
+      - '\bmaba\b'
+    exclude:
+      - 'contoh soal'
+      - 'latihan soal'
+      - 'bank soal'
+      - 'kisi[- ]kisi'
+      - 'kunci jawaban'
+      - 'prediksi soal'
+      - 'gibran'
+      - 'pemakzulan'
+      - '\bptun\b'
+      - 'suket'
+      - 'hak menyatakan pendapat'
+  # Ketat: untuk feed induk/nasional. Inti ambigu dibuang, sisanya harus
+  # pasangan konteks pendidikan + kata peristiwa.
+  strict:
+    core:
+      - '\bsnpmb\b'
+      - '\butbk\b'
+      - '\bsnbt\b'
+      - '\bsnbp\b'
+      - 'kip[- ]kuliah'
+      - '\btka\b'
+      - '\bptkin\b'
+      - 'span[- ]?ptkin'
+      - 'um[- ]?ptkin'
+      - 'seleksi mandiri'
+      - 'jalur mandiri'
+      - '\bspmb\b'
+      - '\bpdss\b'
+      - 'penerimaan mahasiswa baru'
+      - 'sekolah kedinasan'
+      - '\blpdp\b'
+      - 'sisdiknas'
+      - 'uang kuliah tunggal'
+      - '\bukt\b'
+      - 'penjurusan'
+      - 'tes kemampuan akademik'
+    context:
+      - 'sekolah'
+      - 'siswa'
+      - 'murid'
+      - 'kampus'
+      - 'mahasiswa'
+      - 'pendidikan'
+      - 'guru'
+      - 'universitas'
+      - '\bsma\b'
+      - '\bsmk\b'
+      - 'kemendikdasmen'
+      - 'kemdiktisaintek'
+    event:
+      - 'aturan baru'
+      - 'kebijakan'
+      - 'resmi'
+      - 'dibuka'
+      - 'ditutup'
+      - 'diumumkan'
+      - 'pendaftaran'
+      - 'kuota'
+      - 'seleksi'
+      - 'dihapus'
+      - 'diubah'
+      - '\bruu\b'
+      - 'permen'
+      - 'jadwal'
+    exclude:
+      - 'contoh soal'
+      - 'latihan soal'
+      - 'kunci jawaban'
+      - 'gibran'
+      - 'pemakzulan'
+      - '\bptun\b'
+      - 'suket'
+      - 'hak menyatakan pendapat'
+      - 'penyadapan'
+      - 'timnas'
+
+sources:
+  # ===== RESMI: semua perubahan dikirim =====
+  - {id: snpmb-jadwal, name: SNPMB jadwal penting, type: page, url: 'https://snpmb.id/jadwal-penting', label: RESMI, channel: resmi}
+  - {id: snpmb-unduhan, name: SNPMB unduhan, type: page, mode: links, url: 'https://snpmb.id/unduhan', label: RESMI, channel: resmi}
+  - {id: snpmb-terkini, name: SNPMB info terkini, type: page, mode: links, url: 'https://snpmb.id/terkini', label: RESMI, channel: resmi}
+  - {id: snpmb-kuota, name: SNPMB kuota sekolah, type: page, url: 'https://snpmb.id/snbp/kuota-sekolah', label: RESMI, channel: resmi}
+  - {id: kip-kuliah, name: KIP Kuliah, type: page, url: 'https://kip-kuliah.kemdiktisaintek.go.id', label: RESMI, channel: resmi}
+  # Kemdiktisaintek: relevansi rendah, jadi dengan filter kata kunci.
+  - {id: kemdikti-news, name: Kemdiktisaintek kabar, type: page, mode: links, url: 'https://www.kemdiktisaintek.go.id/news/updates', label: RESMI, channel: resmi, filter: edu}
+  # PTKIN: belum diverifikasi langsung. Bila rusak, alert sistem akan memberi tahu.
+  - {id: span-ptkin, name: SPAN-PTKIN, type: page, url: 'https://span.ptkin.ac.id', label: RESMI, channel: resmi}
+  - {id: um-ptkin, name: UM-PTKIN, type: page, url: 'https://um.ptkin.ac.id', label: RESMI, channel: resmi}
+  # Kemendikdasmen/TKA: situs memuat daftar lewat JavaScript dan memblokir bot. Tidak dipantau langsung.
+
+  # ===== PTN (top 20): label PTN, kirim ke #resmi =====
+  # Aturan: hanya URL yang terbaca saat dicek (verified). Sisanya enabled: false + todo.
+  # Pola per kampus: halaman jadwal (text) + halaman pengumuman/berita (mode links).
+  # Path bertahun (v26, 2026) harus diganti tiap musim. Lihat HANDOFF.md.
+  - {id: ptn-uny-jadwal, name: UNY jadwal, type: page, url: 'https://pmb.uny.ac.id/program-sarjana/jadwal', label: PTN, channel: resmi}
+  - {id: ptn-ugm-v26, name: UGM seleksi 2026, type: page, url: 'https://admissions.ugm.ac.id/v26/', label: PTN, channel: resmi}
+  - {id: ptn-ugm-v27, name: UGM seleksi 2027, type: page, url: 'https://admissions.ugm.ac.id/v27/', label: PTN, channel: resmi, watch_appear: true}
+  - {id: ptn-ui-jadwal, name: UI jadwal seleksi, type: page, url: 'https://simak.ui.ac.id/jadwal-seleksi/', label: PTN, channel: resmi}
+  - {id: ptn-ui-home, name: UI halaman baru, type: page, mode: links, url: 'https://simak.ui.ac.id/', label: PTN, channel: resmi}
+  - {id: ptn-itb-pmb, name: ITB PMB jadwal, type: page, url: 'https://ditsama.itb.ac.id/en/pmb-en/', label: PTN, channel: resmi}
+  - {id: ptn-itb-info, name: ITB pengumuman, type: page, mode: links, url: 'https://ditsama.itb.ac.id/en/announcements/', label: PTN, channel: resmi}
+  - {id: ptn-ipb, name: IPB admisi, type: page, mode: links, url: 'https://admisi.ipb.ac.id/', label: PTN, channel: resmi}
+  - {id: ptn-its-snbt, name: ITS SNBT jadwal, type: page, url: 'https://www.its.ac.id/admission/snbt/', label: PTN, channel: resmi}
+  - {id: ptn-its-pengumuman, name: ITS pengumuman, type: page, mode: links, url: 'https://www.its.ac.id/admission/pengumuman/', label: PTN, channel: resmi}
+  - {id: ptn-unair, name: UNAIR PPMB berita, type: page, mode: links, url: 'https://ppmb.unair.ac.id/en/category/berita', label: PTN, channel: resmi}
+  - {id: ptn-undip-kalender, name: UNDIP kalender, type: page, url: 'https://pmb.undip.ac.id/kalender-pendaftaran/', label: PTN, channel: resmi}
+  - {id: ptn-undip-pengumuman, name: UNDIP pengumuman, type: page, mode: links, url: 'https://pmb.undip.ac.id/category/pengumuman/', label: PTN, channel: resmi}
+  - {id: ptn-uns-berita, name: UNS SPMB berita, type: page, mode: links, url: 'https://spmb.uns.ac.id/berita', label: PTN, channel: resmi}
+  - {id: ptn-uns-jadwal, name: UNS rekap jadwal, type: page, url: 'https://spmb.uns.ac.id/berita/show?id=10', label: PTN, channel: resmi}
+  - {id: ptn-usu, name: USU penerimaan terpadu, type: page, url: 'https://penerimaan-terpadu.usu.ac.id/id', label: PTN, channel: resmi}
+  - {id: ptn-unnes-pengumuman, name: UNNES pengumuman, type: page, mode: links, url: 'https://unnes.ac.id/admission/pengumuman/', label: PTN, channel: resmi}
+  - {id: ptn-unnes-tanggal, name: UNNES tanggal penting 2026, type: page, url: 'https://unnes.ac.id/admission/tanggal-penting-admisi-2026/', label: PTN, channel: resmi}
+  - {id: ptn-unsoed, name: UNSOED admisi, type: page, mode: links, url: 'https://admisi.unsoed.ac.id/', label: PTN, channel: resmi}
+  - {id: ptn-unand-berita, name: UNAND berita pengumuman, type: page, mode: links, url: 'https://pmb.unand.ac.id/berita-pengumuman', label: PTN, channel: resmi}
+  - {id: ptn-unand-home, name: UNAND jadwal (beranda), type: page, url: 'https://pmb.unand.ac.id/', label: PTN, channel: resmi}
+  # --- Belum aktif: URL belum terbaca / belum ditemukan. Cek dari Actions lalu nyalakan. ---
+  - {id: ptn-unpad, name: UNPAD SMUP, type: page, url: 'https://smup.unpad.ac.id', label: PTN, channel: resmi, enabled: false, todo: 'fetch error client_error, cek dari Actions'}
+  - {id: ptn-unhas, name: UNHAS PMB, type: page, url: 'https://regpmb.unhas.ac.id', label: PTN, channel: resmi, enabled: false, todo: 'server error saat dicek, cek ulang'}
+  - {id: ptn-unsri, name: UNSRI seleksi mandiri, type: page, url: 'https://sm.unsri.ac.id/', label: PTN, channel: resmi, enabled: false, todo: 'client_error saat dicek, cek ulang'}
+  - {id: ptn-upi, name: UPI PMB, type: page, url: 'https://pmb.upi.edu/', label: PTN, channel: resmi, enabled: false, todo: 'halaman JS (isi kosong tanpa render). Cari endpoint berita statis atau pantau berita.upi.edu'}
+  - {id: ptn-unj, name: UNJ penmaba, type: page, url: 'https://pendaftaran.unj.ac.id/', label: PTN, channel: resmi, enabled: false, todo: 'robots.txt melarang. Jangan dinyalakan. Cari portal lain atau andalkan berita'}
+  - {id: ptn-ub, name: Universitas Brawijaya, type: page, url: 'https://www.ub.ac.id/', label: PTN, channel: resmi, enabled: false, todo: 'portal penerimaan UB (SMUB/SELMA) belum ditemukan. Cari URL jadwal'}
+  - {id: ptn-unej, name: UNEJ SEMMABA, type: page, url: 'https://unej.ac.id/', label: PTN, channel: resmi, enabled: false, todo: 'portal SEMMABA belum ditemukan. Cari URL jadwal'}
+
+  # ===== BERITA lapis A: kanal pendidikan, filter longgar =====
+  - {id: rss-detikedu, name: detikEdu, type: rss, url: 'https://www.detik.com/edu/rss', label: BERITA, channel: berita, filter: edu}
+
+  # ===== BERITA lapis B: induk/nasional, filter ketat, poll sering =====
+  - {id: rss-antara, name: Antara terkini, type: rss, url: 'https://www.antaranews.com/rss/terkini', label: BERITA, channel: berita, filter: strict}
+  - {id: rss-okezone, name: Okezone, type: rss, url: 'https://sindikasi.okezone.com/index.php/rss/0/RSS2.0', label: BERITA, channel: berita, filter: strict, host_match: ['edukasi.okezone.com'], host_filter: edu}
+  - {id: rss-detiknews, name: detikNews, type: rss, url: 'https://news.detik.com/rss', label: BERITA, channel: berita, filter: strict}
+  - {id: rss-cnn, name: CNN Indonesia nasional, type: rss, url: 'https://www.cnnindonesia.com/nasional/rss', label: BERITA, channel: berita, filter: strict}
+  - {id: rss-republika, name: Republika, type: rss, url: 'https://republika.co.id/rss', label: BERITA, channel: berita, filter: strict}
+  - {id: rss-liputan6, name: Liputan6 news, type: rss, url: 'https://feed.liputan6.com/rss/news', label: BERITA, channel: berita, filter: strict}
+  - {id: rss-viva, name: Viva, type: rss, url: 'https://www.viva.co.id/get/all', label: BERITA, channel: berita, filter: strict}
+  - {id: rss-sindonews, name: SINDOnews, type: rss, url: 'https://www.sindonews.com/feed', label: BERITA, channel: berita, filter: strict}
+
+  # ===== BERITA prioritas rendah =====
+  - {id: rss-bbc, name: BBC Indonesia, type: rss, url: 'http://feeds.bbci.co.uk/indonesia/rss.xml', label: BERITA, channel: berita, filter: strict}
+  - {id: rss-cnbc, name: CNBC Indonesia, type: rss, url: 'https://www.cnbcindonesia.com/rss', label: BERITA, channel: berita, filter: strict}
+  - {id: rss-tempo, name: Tempo nasional, type: rss, url: 'https://rss.tempo.co/nasional', label: BERITA, channel: berita, filter: strict}

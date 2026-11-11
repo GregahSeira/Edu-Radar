@@ -1,0 +1,57 @@
+name: edu-radar
+
+on:
+  workflow_dispatch:
+  # Cadangan. Pemicu utama: cron-job.org memanggil workflow_dispatch tiap 15 menit.
+  schedule:
+    - cron: "7 * * * *"
+
+concurrency:
+  group: edu-radar
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Ambil state dari branch state
+        run: |
+          if git ls-remote --exit-code --heads origin state >/dev/null 2>&1; then
+            git fetch --depth=1 origin state
+            git show FETCH_HEAD:state.json > state.json
+          else
+            echo '{}' > state.json
+          fi
+          cp state.json /tmp/state.prev
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - run: python main.py
+        env:
+          DISCORD_WEBHOOK_RESMI: ${{ secrets.DISCORD_WEBHOOK_RESMI }}
+          DISCORD_WEBHOOK_BERITA: ${{ secrets.DISCORD_WEBHOOK_BERITA }}
+          DISCORD_WEBHOOK_SISTEM: ${{ secrets.DISCORD_WEBHOOK_SISTEM }}
+          HC_URL: ${{ secrets.HC_URL }}
+
+      # State disimpan sebagai 1 commit di branch "state" (force push), jadi riwayat tidak membengkak.
+      - name: Simpan state
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if cmp -s state.json /tmp/state.prev; then echo "state sama, skip"; exit 0; fi
+          rm -rf /tmp/st && mkdir /tmp/st && cp state.json /tmp/st/
+          cd /tmp/st
+          git init -q -b state
+          git add state.json
+          git -c user.name=edu-radar -c user.email=edu-radar@users.noreply.github.com commit -qm "state"
+          git push -q -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" state
