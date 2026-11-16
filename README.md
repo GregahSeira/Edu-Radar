@@ -27,6 +27,13 @@ Lanjut dari sesi lain? Baca `HANDOFF.md` dulu.
 - `exclude`: selalu membuang (contoh soal, try out, CPNS, Bank Mandiri, dll).
 - URL hanya dicek bagian path-nya. Host tidak ikut.
 
+## Pengaman halaman (anti spam judi)
+- Situs kampus yang diretas sering disisipi tautan judi. Dua lapis di `sources.yml`:
+- `link_allow`: tautan ke domain luar dibuang, kecuali situs sumber sendiri dan domain di daftar ini. Per sumber bisa ditambah `link_allow`.
+- `page_spam`: baris yang memuat kata judi dibuang.
+- Log run menulis `dibuang: tautan luar=N baris spam=N` per sumber.
+- Mode text: tiap baris baru diberi konteks `(setelah: baris sebelumnya)`.
+
 ## Tes dan probe
 - `python tests/test_filter.py`: uji filter terhadap `tests/cases.yml` dan validasi `sources.yml`. Jalan otomatis di Actions (`test.yml`) tiap push ke `main`.
 - Salah klasifikasi? Tambah baris di `tests/cases.yml`, setel `sources.yml`, jalankan tes.

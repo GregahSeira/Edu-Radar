@@ -37,6 +37,8 @@ GRACE = 120  # detik toleransi interval (hanya untuk sumber dengan every)
 WORKERS = 8
 GRAY_CHANNEL = None  # diisi dari sources.yml (gray_channel)
 GRAY_ON = False  # aktif hanya jika webhook channel itu ada (atau DRY_RUN)
+LINK_ALLOW = []  # domain luar yang boleh ditaut halaman (sources.yml link_allow)
+SPAM = None  # regex baris spam halaman (sources.yml page_spam)
 
 
 def log(*a):
@@ -259,10 +261,33 @@ def run_rss(src, st, filters, body):
 
 
 # ---------- page ----------
+def site_base(host):
+    """its.ac.id dari www.its.ac.id, snpmb.id dari snpmb.id."""
+    p = host.lower().split(":")[0].split(".")
+    n = 3 if len(p) >= 3 and p[-1] == "id" and p[-2] in ("ac", "go", "sch", "co", "or", "web", "my") else 2
+    return ".".join(p[-n:])
+
+
+def host_allowed(host, src):
+    """Tautan boleh: situs yang sama, atau domain di link_allow (global / per sumber)."""
+    host = host.lower().split(":")[0]
+    if not host:
+        return True
+    allow = [site_base(urlparse(src["url"]).netloc)] + LINK_ALLOW + list(src.get("link_allow") or [])
+    return any(host == a or host.endswith("." + a) for a in allow)
+
+
 def page_items(src, html):
     soup = BeautifulSoup(html, "html.parser")
     for t in soup(["script", "style", "noscript", "svg"]):
         t.decompose()
+    # Situs yang diretas sering disisipi tautan judi ke domain luar. Buang tautan luar yang tidak dikenal
+    # (teksnya ikut hilang, jadi mode text juga bersih).
+    dropped = 0
+    for a in soup.find_all("a", href=True):
+        if not host_allowed(urlparse(urljoin(src["url"], a["href"])).netloc, src):
+            a.decompose()
+            dropped += 1
     ign = re.compile("|".join(src["ignore_regex"]), re.I) if src.get("ignore_regex") else None
     if src.get("mode", "text") == "links":
         items = []
@@ -275,6 +300,11 @@ def page_items(src, html):
         items = [i for i in items if i]
     if ign:
         items = [i for i in items if not ign.search(i)]
+    n = len(items)
+    if SPAM is not None:
+        items = [i for i in items if not SPAM.search(i)]
+    if dropped or n != len(items):
+        log(f"[{src['id']}] dibuang: tautan luar={dropped} baris spam={n - len(items)}")
     return list(dict.fromkeys(items))
 
 
@@ -305,6 +335,10 @@ def run_page(src, st, filters, body, err):
         added = [t for k, t in cur.items() if k not in old and passes(f, filter_text(t))]
         if added:
             shown = [a[:200] for a in added[:8]]
+            if src.get("mode", "text") != "links":
+                # baris lepas (mis. tanggal) tidak bermakna tanpa baris sebelumnya
+                prev = {t: items[i - 1] for i, t in enumerate(items) if i}
+                shown = [f"{a[:160]}" + (f"  (setelah: {prev[a][:70]})" if a in prev else "") for a in added[:8]]
             msg = "\n".join("- " + s for s in shown)
             if len(added) > 8:
                 msg += f"\n(+{len(added) - 8} baris lain)"
@@ -341,11 +375,18 @@ def health_bad(src, st, err):
             st["alerted"][sid] = True
 
 
+def load_page_guards(cfg):
+    global LINK_ALLOW, SPAM
+    LINK_ALLOW = [d.lower() for d in (cfg.get("link_allow") or [])]
+    SPAM = re.compile("|".join(cfg["page_spam"]), re.I) if cfg.get("page_spam") else None
+
+
 def main():
     with open(SOURCES_PATH, encoding="utf-8") as f:
         cfg = yaml.safe_load(f)
     filters = compile_filters(cfg.get("filters"))
-    global GRAY_CHANNEL, GRAY_ON
+    global GRAY_CHANNEL, GRAY_ON, LINK_ALLOW, SPAM
+    load_page_guards(cfg)
     GRAY_CHANNEL = cfg.get("gray_channel")
     GRAY_ON = bool(GRAY_CHANNEL) and (DRY or bool(os.environ.get("DISCORD_WEBHOOK_" + GRAY_CHANNEL.upper())))
     st = load_state()

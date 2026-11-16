@@ -26,6 +26,30 @@ def test_cases():
     assert not bad, "\n".join(bad)
 
 
+def test_page_guards():
+    main.load_page_guards(CFG)
+    html = """<html><body>
+    <a href="/admission/pengumuman/jadwal-snbt-2027">Jadwal SNBT 2027</a>
+    <a href="https://snpmb.id/unduhan">Unduhan SNPMB</a>
+    <a href="https://arsip.its.ac.id/sk.pdf">SK Rektor</a>
+    <a href="https://smeda.org/PROJECTS/x">Ketika Video Scatter Hitam Mahjong Ways 2</a>
+    <a href="https://urbanairmobilitynews.com/wp-content/berita/a.html">Kasino Online dan Risiko Deep Link</a>
+    <a href="https://evil.example/q">Artikel netral tanpa kata kunci</a>
+    <p>Kasino Digital dan Fenomena Penipuan</p><p>Shio Kuda Api pada November 2026</p>
+    <p>Pendaftaran dibuka 17 November 2026</p>
+    </body></html>"""
+    for mode in ("links", "text"):
+        src = {"id": "t", "url": "https://www.its.ac.id/admission/pengumuman/", "mode": mode}
+        out = " || ".join(main.page_items(src, html))
+        assert "Jadwal SNBT 2027" in out and "Unduhan SNPMB" in out and "SK Rektor" in out, (mode, out)
+        for bad in ("Mahjong", "Kasino", "Shio", "netral", "smeda", "evil.example"):
+            assert bad not in out, (mode, bad, out)
+    assert "17 November 2026" in out
+    assert main.site_base("pmb.undip.ac.id") == "undip.ac.id" and main.site_base("snpmb.id") == "snpmb.id"
+    src = {"id": "t", "url": "https://x.ac.id/", "mode": "links", "link_allow": ["evil.example"]}
+    assert "netral" in " ".join(main.page_items(src, html))
+
+
 def test_filters_shared():
     assert FILTERS.keys() >= {"edu", "strict"}
 

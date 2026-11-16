@@ -8,6 +8,29 @@
 # Butuh secret DISCORD_WEBHOOK_LAIN. Tanpa secret itu, berita abu-abu dilewati.
 gray_channel: lain
 
+# Pengaman halaman (situs kampus sering diretas dan disisipi tautan judi).
+# link_allow: domain luar yang boleh ditaut. Situs sumber sendiri selalu boleh. Tautan ke domain lain dibuang.
+# Per sumber bisa ditambah dengan kunci link_allow yang sama.
+link_allow:
+  - snpmb.id
+  - kemdiktisaintek.go.id
+  - kemendikdasmen.go.id
+  - kemdikbud.go.id
+  - kemenag.go.id
+  - ptkin.ac.id
+  - lpdp.kemenkeu.go.id
+  - google.com
+  - youtube.com
+  - youtu.be
+# page_spam: baris halaman yang kena pola ini dibuang (lapis kedua, untuk spam tanpa tautan luar).
+page_spam:
+  - 'kasino|casino'
+  - '\bjudi\b|\bjudol\b|taruhan|\btogel\b|\btoto\b|sbobet|parlay|\bpoker\b'
+  - 'gacor|maxwin|jackpot|\brtp\b|scatter|free ?spin'
+  - 'slot (gacor|online|demo|dana|resmi|terbaru|thailand|88)|\bslot\d+|situs slot|link slot'
+  - 'mahjong|pragmatic|pg ?soft|olympus|starlight princess|fortune (rabbit|tiger|ox)|sweet bonanza|wild bandito'
+  - '\bshio\b'
+
 filters:
   # Satu aturan untuk semua berita (edu dan strict sama): khusus SMA sederajat dan seputar masuk PTN.
   # 2 lolos : tidak kena exclude, DAN (kena core ATAU (kena topic DAN kena anchor)).
